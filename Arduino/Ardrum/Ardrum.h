@@ -13,7 +13,7 @@ public:
 
 	void iniciar();
 
-	void loop();
+	void loop(const unsigned long lngMillis);
 
 private:
 
@@ -25,7 +25,7 @@ private:
 
 	void iniciarArrPad();
 
-	void loopArrPad();
+	void loopArrPad(const unsigned long lngMillis);
 };
 
 #endif // !Ardrum_h

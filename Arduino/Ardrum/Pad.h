@@ -48,11 +48,11 @@ public:
 
 	void iniciar(unsigned int intPino);
 
-	void loop();
+	void loop(const unsigned long lngMillis);
 
 private:
 
-	void verificarToque();
+	void verificarToque(const unsigned long lngMillis);
 
 #pragma endregion
 };

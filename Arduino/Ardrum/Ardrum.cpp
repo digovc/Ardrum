@@ -48,16 +48,16 @@ void Ardrum::iniciarArrPad()
 	}
 }
 
-void Ardrum::loop()
+void Ardrum::loop(const unsigned long lngMillis)
 {
-	this->loopArrPad();
+	this->loopArrPad(lngMillis);
 }
 
-void Ardrum::loopArrPad()
+void Ardrum::loopArrPad(const unsigned long lngMillis)
 {
 	for (unsigned int i = 0; i < Config::getI()->INT_PAD_QUANTIDADE; i++)
 	{
-		this->getArrPad()[i].loop();
+		this->getArrPad()[i].loop(lngMillis);
 	}
 }
 

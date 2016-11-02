@@ -49,19 +49,19 @@ void Pad::iniciar(unsigned int intPino)
 	this->setIntPino(intPino);
 }
 
-void Pad::loop()
+void Pad::loop(const unsigned long lngMillis)
 {
-	this->verificarToque();
+	this->verificarToque(lngMillis);
 }
 
-void Pad::verificarToque()
+void Pad::verificarToque(const unsigned long lngMillis)
 {
 	if (this->getBooTocou())
 	{
 		return;
 	}
 
-	if ((millis() - this->getLngUltimoToque()) < Config::INT_PAD_TOQUE_INTERVALO)
+	if ((lngMillis - this->getLngUltimoToque()) < Config::INT_PAD_TOQUE_INTERVALO)
 	{
 		return;
 	}
@@ -70,7 +70,12 @@ void Pad::verificarToque()
 
 	if (intPinoValor < Config::INT_PAD_THRESHOLD)
 	{
+		return;
 	}
+
+	this->setBooTocou(true);
+
+	this->setLngUltimoToque(lngMillis);
 }
 
 #pragma endregion

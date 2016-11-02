@@ -1,5 +1,7 @@
 #include "Ardrum.h"
 
+unsigned long lngMillis = -1;
+
 void setup()
 {
 	Ardrum::getI()->iniciar();
@@ -7,5 +9,7 @@ void setup()
 
 void loop()
 {
-	Ardrum::getI()->loop();
+	lngMillis = millis();
+	
+	Ardrum::getI()->loop(lngMillis);
 }

@@ -9,7 +9,7 @@ void setup()
 
 void loopW()
 {
-	Ardrum::getI()->loop();
+	Ardrum::getI()->loop(0);
 }
 
 unsigned int main(int argc, char *argv[], char *envp[])
