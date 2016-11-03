@@ -83,6 +83,9 @@
     <EmbeddedResource Include="Controle\MixerCanal.resx">
       <DependentUpon>MixerCanal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controle\UserControlArdrumBase.resx">
+      <DependentUpon>UserControlArdrumBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmArdrumBase.resx">
       <DependentUpon>FrmArdrumBase.cs</DependentUpon>
     </EmbeddedResource>
