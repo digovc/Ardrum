@@ -15,9 +15,14 @@ unsigned long millis();
 class SerialClass
 {
 public:
+
 	void begin(long lngBaud);
 
-	void println(char* strTexto);
+	void print(char *strMsg);
+
+	void print(unsigned int intMsg);
+
+	void println(char *strMsg);
 };
 
 #endif

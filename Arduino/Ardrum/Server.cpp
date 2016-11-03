@@ -21,7 +21,6 @@ Server * Server::getI()
 SerialClass Serial;
 #endif
 
-
 #pragma endregion
 
 #pragma region Construtores
@@ -33,6 +32,15 @@ Server::Server()
 #pragma endregion
 
 #pragma region Metodos
+
+void Server::enviarToque(unsigned int intPino, unsigned int intForca)
+{	
+	// TODO: Implementar validação para não permitir estouro do buffer da porta serial.
+
+	Serial.print(intPino);
+	Serial.print(intForca);
+	Serial.print("\n");
+}
 
 void Server::iniciar()
 {

@@ -12,6 +12,16 @@ void Pad::setBooTocou(bool booTocou)
 	_booTocou = booTocou;
 }
 
+unsigned int Pad::getIntForca()
+{
+	return _intForca;
+}
+
+void Pad::setIntForca(unsigned int intForca)
+{
+	_intForca = intForca;
+}
+
 unsigned int Pad::getIntPino()
 {
 	return _intPino;
@@ -22,7 +32,7 @@ void Pad::setIntPino(unsigned int intPino)
 	_intPino = intPino;
 }
 
-long Pad::getLngUltimoToque()
+unsigned long Pad::getLngUltimoToque()
 {
 	return _lngUltimoToque;
 }
@@ -44,17 +54,32 @@ Pad::Pad()
 
 #pragma region Metodos
 
+void Pad::enviar()
+{
+	if (!this->getBooTocou())
+	{
+		return;
+	}
+
+	Server::getI()->enviarToque(this->getIntPino(), this->getIntForca());
+	
+	this->setBooTocou(false);
+}
+
 void Pad::iniciar(unsigned int intPino)
 {
+	this->setBooTocou(false);
 	this->setIntPino(intPino);
+	this->setLngUltimoToque(-1);
 }
 
 void Pad::loop(const unsigned long lngMillis)
 {
-	this->verificarToque(lngMillis);
+	this->verificar(lngMillis);
+	this->enviar();
 }
 
-void Pad::verificarToque(const unsigned long lngMillis)
+void Pad::verificar(const unsigned long lngMillis)
 {
 	if (this->getBooTocou())
 	{
@@ -66,15 +91,14 @@ void Pad::verificarToque(const unsigned long lngMillis)
 		return;
 	}
 
-	unsigned int intPinoValor = analogRead(this->getIntPino());
+	this->setIntForca(analogRead(this->getIntPino()));
 
-	if (intPinoValor < Config::INT_PAD_THRESHOLD)
+	if (this->getIntForca() < Config::INT_PAD_THRESHOLD)
 	{
 		return;
 	}
 
 	this->setBooTocou(true);
-
 	this->setLngUltimoToque(lngMillis);
 }
 

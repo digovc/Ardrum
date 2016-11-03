@@ -14,6 +14,14 @@ void SerialClass::begin(long lngBaud)
 {
 }
 
-void SerialClass::println(char * strTexto)
+void SerialClass::println(char *strTexto)
+{
+}
+
+void SerialClass::print(char *strTexto)
+{
+}
+
+void SerialClass::print(unsigned int intMsg)
 {
 }

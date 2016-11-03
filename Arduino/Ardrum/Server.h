@@ -15,6 +15,8 @@ public:
 
 	static Server *getI();
 
+	void enviarToque(unsigned int intPino, unsigned int intForca);
+
 	void iniciar();
 
 private:

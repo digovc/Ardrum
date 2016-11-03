@@ -2,6 +2,7 @@
 #define Pad_h
 
 #include "Config.h"
+#include "Server.h"
 
 #if defined(ARDUINO)
 #include <Arduino.h>
@@ -21,15 +22,21 @@ private:
 
 	void setBooTocou(bool booTocou);
 
+	unsigned int _intForca;
+	
+	unsigned int getIntForca();
+	
+	void setIntForca(unsigned int intForca);
+
 	unsigned int _intPino;
 
 	unsigned int getIntPino();
 
 	void setIntPino(unsigned int intPino);
 
-	long _lngUltimoToque;
+	unsigned long _lngUltimoToque;
 
-	long getLngUltimoToque();
+	unsigned long getLngUltimoToque();
 
 	void setLngUltimoToque(unsigned long lngUltimoToque);
 
@@ -52,7 +59,9 @@ public:
 
 private:
 
-	void verificarToque(const unsigned long lngMillis);
+	void enviar();
+
+	void verificar(const unsigned long lngMillis);
 
 #pragma endregion
 };
