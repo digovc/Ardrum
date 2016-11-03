@@ -41,7 +41,6 @@
             // 
             // pnlMixer
             // 
-            this.pnlMixer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMixer.Controls.Add(this.mxcChimbal);
             this.pnlMixer.Controls.Add(this.mxcTarol);
             this.pnlMixer.Controls.Add(this.mxcBumbo);
@@ -59,7 +58,7 @@
             // 
             this.mxcChimbal.booLinhaDireita = false;
             this.mxcChimbal.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcChimbal.Location = new System.Drawing.Point(112, 0);
+            this.mxcChimbal.Location = new System.Drawing.Point(114, 0);
             this.mxcChimbal.Name = "mxcChimbal";
             this.mxcChimbal.strTitulo = "Pad 1";
             this.mxcChimbal.TabIndex = 6;
@@ -68,7 +67,7 @@
             // 
             this.mxcTarol.booLinhaDireita = false;
             this.mxcTarol.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTarol.Location = new System.Drawing.Point(187, 0);
+            this.mxcTarol.Location = new System.Drawing.Point(189, 0);
             this.mxcTarol.Name = "mxcTarol";
             this.mxcTarol.strTitulo = "Pad 1";
             this.mxcTarol.TabIndex = 5;
@@ -77,7 +76,7 @@
             // 
             this.mxcBumbo.booLinhaDireita = false;
             this.mxcBumbo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcBumbo.Location = new System.Drawing.Point(262, 0);
+            this.mxcBumbo.Location = new System.Drawing.Point(264, 0);
             this.mxcBumbo.Name = "mxcBumbo";
             this.mxcBumbo.strTitulo = "Pad 1";
             this.mxcBumbo.TabIndex = 4;
@@ -86,7 +85,7 @@
             // 
             this.mxcTomA.booLinhaDireita = false;
             this.mxcTomA.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTomA.Location = new System.Drawing.Point(337, 0);
+            this.mxcTomA.Location = new System.Drawing.Point(339, 0);
             this.mxcTomA.Name = "mxcTomA";
             this.mxcTomA.strTitulo = "Pad 1";
             this.mxcTomA.TabIndex = 3;
@@ -95,7 +94,7 @@
             // 
             this.mxcTomB.booLinhaDireita = false;
             this.mxcTomB.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTomB.Location = new System.Drawing.Point(412, 0);
+            this.mxcTomB.Location = new System.Drawing.Point(414, 0);
             this.mxcTomB.Name = "mxcTomB";
             this.mxcTomB.strTitulo = "Pad 1";
             this.mxcTomB.TabIndex = 2;
@@ -104,7 +103,7 @@
             // 
             this.mxcPratoConducao.booLinhaDireita = false;
             this.mxcPratoConducao.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcPratoConducao.Location = new System.Drawing.Point(487, 0);
+            this.mxcPratoConducao.Location = new System.Drawing.Point(489, 0);
             this.mxcPratoConducao.Name = "mxcPratoConducao";
             this.mxcPratoConducao.strTitulo = "Pad 1";
             this.mxcPratoConducao.TabIndex = 1;

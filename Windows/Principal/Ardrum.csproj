@@ -66,6 +66,12 @@
     <Compile Include="Controle\UserControlArdrumBase.Designer.cs">
       <DependentUpon>UserControlArdrumBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\FrmArdrumBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmArdrumBase.Designer.cs">
+      <DependentUpon>FrmArdrumBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controle\MixerCanal.resx">
       <DependentUpon>MixerCanal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmArdrumBase.resx">
+      <DependentUpon>FrmArdrumBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

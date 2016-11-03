@@ -85,34 +85,43 @@
             // 
             // btnMute
             // 
+            this.btnMute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnMute.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMute.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
+            this.btnMute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMute.Location = new System.Drawing.Point(10, 60);
             this.btnMute.Name = "btnMute";
             this.btnMute.Size = new System.Drawing.Size(29, 25);
             this.btnMute.TabIndex = 2;
-            this.btnMute.UseVisualStyleBackColor = true;
+            this.btnMute.UseVisualStyleBackColor = false;
             // 
             // btnSolo
             // 
+            this.btnSolo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnSolo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSolo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
+            this.btnSolo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSolo.Location = new System.Drawing.Point(10, 35);
             this.btnSolo.Name = "btnSolo";
             this.btnSolo.Size = new System.Drawing.Size(29, 25);
             this.btnSolo.TabIndex = 1;
-            this.btnSolo.UseVisualStyleBackColor = true;
+            this.btnSolo.UseVisualStyleBackColor = false;
             // 
             // btnAudio
             // 
+            this.btnAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnAudio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAudio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
+            this.btnAudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAudio.Location = new System.Drawing.Point(10, 10);
             this.btnAudio.Name = "btnAudio";
             this.btnAudio.Size = new System.Drawing.Size(29, 25);
             this.btnAudio.TabIndex = 0;
-            this.btnAudio.UseVisualStyleBackColor = true;
+            this.btnAudio.UseVisualStyleBackColor = false;
             // 
             // ctrLinha
             // 
-            this.ctrLinha.BackColor = System.Drawing.Color.Gray;
+            this.ctrLinha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
             this.ctrLinha.Dock = System.Windows.Forms.DockStyle.Left;
             this.ctrLinha.Name = "ctrLinha";
             this.ctrLinha.TabIndex = 4;

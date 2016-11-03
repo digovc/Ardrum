@@ -1,6 +1,8 @@
-﻿namespace Ardrum.Frm
+﻿using DigoFramework.Frm;
+
+namespace Ardrum.Frm
 {
-    public partial class FrmPrincipal : FrmArdrumBase
+    public partial class FrmArdrumBase : FrmBase
     {
         #region Constantes
 
@@ -12,7 +14,7 @@
 
         #region Construtores
 
-        public FrmPrincipal()
+        public FrmArdrumBase()
         {
             this.InitializeComponent();
         }
