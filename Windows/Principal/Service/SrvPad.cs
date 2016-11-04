@@ -4,6 +4,7 @@ using Ardrum.Dominio;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
+using CSCore.Streams;
 using DigoFramework.Service;
 
 namespace Ardrum.Service
@@ -17,6 +18,7 @@ namespace Ardrum.Service
         #region Atributos
 
         private int _intToqueVolume;
+        private PanSource _objPanSource;
         private ISoundOut _objSoundOut;
         private IWaveSource _objWave;
         private PadDominio _pad;
@@ -51,6 +53,21 @@ namespace Ardrum.Service
             set
             {
                 _intToqueVolume = value;
+            }
+        }
+
+        private PanSource objPanSource
+        {
+            get
+            {
+                if (_objPanSource != null)
+                {
+                    return _objPanSource;
+                }
+
+                _objPanSource = this.getObjPanSource();
+
+                return _objPanSource;
             }
         }
 
@@ -117,6 +134,15 @@ namespace Ardrum.Service
             }
         }
 
+        private PanSource getObjPanSource()
+        {
+            PanSource objResultado = new PanSource(this.objWave.ToSampleSource());
+
+            objResultado = new PanSource(this.objWave.ToSampleSource());
+
+            return objResultado;
+        }
+
         private ISoundOut getObjSoundOut()
         {
             if (this.pad == null)
@@ -124,7 +150,7 @@ namespace Ardrum.Service
                 return null;
             }
 
-            ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 25, Device = AppArdrum.i.objDevice };
+            ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 50, Device = AppArdrum.i.objDevice };
 
             objSoundOutResultado.Initialize(this.objWave);
 
@@ -140,7 +166,11 @@ namespace Ardrum.Service
                 return null;
             }
 
-            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio).ToSampleSource().ToMono().ToWaveSource();
+            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio);
+
+            objWaveResultado.ToStereo();
+
+            objWaveResultado.AppendSource(x => new PanSource(x.ToSampleSource()) { Pan = this.pad.fltBalanco });
 
             return objWaveResultado;
         }
@@ -148,6 +178,13 @@ namespace Ardrum.Service
         private void loop()
         {
             this.tocar();
+        }
+
+        private void reiniciarObjWave()
+        {
+            this.objWave.Dispose();
+
+            this.objWave = null;
         }
 
         private void setPad(PadDominio pad)
@@ -158,6 +195,7 @@ namespace Ardrum.Service
             }
 
             pad.onDirAudioChanged += this.pad_onDirAudioChanged;
+            pad.onFltBalancoChanged += this.pad_onFltBalancoChanged;
             pad.onFltVolumeChanged += this.pad_onFltVolumeChanged;
         }
 
@@ -184,9 +222,12 @@ namespace Ardrum.Service
 
         private void pad_onDirAudioChanged(object sender, EventArgs e)
         {
-            this.objWave.Dispose();
+            this.reiniciarObjWave();
+        }
 
-            this.objWave = null;
+        private void pad_onFltBalancoChanged(object sender, EventArgs e)
+        {
+            this.reiniciarObjWave();
         }
 
         private void pad_onFltVolumeChanged(object sender, EventArgs e)

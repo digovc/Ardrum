@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tcbPan = new System.Windows.Forms.TrackBar();
+            this.tcbBalanco = new System.Windows.Forms.TrackBar();
             this.tcbVolume = new System.Windows.Forms.TrackBar();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlComando = new System.Windows.Forms.Panel();
@@ -37,22 +37,22 @@
             this.btnAudio = new Ardrum.Controle.BotaoArdrum();
             this.ctrLinha = new DigoFramework.Controle.Diverso.Linha();
             this.ofdDirAudio = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.tcbPan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcbBalanco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcbVolume)).BeginInit();
             this.pnlComando.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcbPan
             // 
-            this.tcbPan.AutoSize = false;
-            this.tcbPan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tcbPan.Enabled = false;
-            this.tcbPan.Location = new System.Drawing.Point(1, 16);
-            this.tcbPan.Margin = new System.Windows.Forms.Padding(2);
-            this.tcbPan.Name = "tcbPan";
-            this.tcbPan.Size = new System.Drawing.Size(59, 20);
-            this.tcbPan.TabIndex = 0;
-            this.tcbPan.Value = 5;
+            this.tcbBalanco.AutoSize = false;
+            this.tcbBalanco.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tcbBalanco.Location = new System.Drawing.Point(1, 16);
+            this.tcbBalanco.Margin = new System.Windows.Forms.Padding(2);
+            this.tcbBalanco.Name = "tcbBalanco";
+            this.tcbBalanco.Size = new System.Drawing.Size(59, 20);
+            this.tcbBalanco.TabIndex = 0;
+            this.tcbBalanco.Value = 5;
+            this.tcbBalanco.Scroll += new System.EventHandler(this.tcbBalanco_Scroll);
             // 
             // tcbVolume
             // 
@@ -145,13 +145,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlComando);
             this.Controls.Add(this.tcbVolume);
-            this.Controls.Add(this.tcbPan);
+            this.Controls.Add(this.tcbBalanco);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.ctrLinha);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MixerCanal";
             this.Size = new System.Drawing.Size(60, 200);
-            ((System.ComponentModel.ISupportInitialize)(this.tcbPan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcbBalanco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcbVolume)).EndInit();
             this.pnlComando.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -160,7 +160,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TrackBar tcbPan;
+        private System.Windows.Forms.TrackBar tcbBalanco;
         private System.Windows.Forms.TrackBar tcbVolume;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlComando;

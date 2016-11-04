@@ -11,6 +11,7 @@ namespace Ardrum.Dominio
         #region Atributos
 
         private string _dirAudio;
+        private float _fltBalanco;
         private float _fltVolume = 0.75f;
         private int _intPinoNumero;
         private string _strNome;
@@ -32,6 +33,26 @@ namespace Ardrum.Dominio
                 _dirAudio = value;
 
                 this.setDirAudio(_dirAudio);
+            }
+        }
+
+        public float fltBalanco
+        {
+            get
+            {
+                return _fltBalanco;
+            }
+
+            set
+            {
+                if (_fltBalanco == value)
+                {
+                    return;
+                }
+
+                _fltBalanco = value;
+
+                this.setFltBalanco(_fltBalanco);
             }
         }
 
@@ -94,6 +115,11 @@ namespace Ardrum.Dominio
             this.onDirAudioChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        private void setFltBalanco(float fltBalanco)
+        {
+            this.onFltBalancoChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         private void setFltVolume(float decVolume)
         {
             this.onFltVolumeChanged?.Invoke(this, EventArgs.Empty);
@@ -104,6 +130,8 @@ namespace Ardrum.Dominio
         #region Eventos
 
         public event EventHandler onDirAudioChanged;
+
+        public event EventHandler onFltBalancoChanged;
 
         public event EventHandler onFltVolumeChanged;
 

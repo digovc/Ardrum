@@ -112,6 +112,16 @@ namespace Ardrum.Controle
 
         #region Métodos
 
+        private void atualizarFltBalanco()
+        {
+            if (this.pad == null)
+            {
+                return;
+            }
+
+            this.pad.fltBalanco = (this.tcbBalanco.Value / this.tcbBalanco.Maximum * 2 - 1);
+        }
+
         protected override void inicializar()
         {
             base.inicializar();
@@ -194,7 +204,20 @@ namespace Ardrum.Controle
                 new Erro("Erro inesperado.\n", ex);
             }
         }
+        private void tcbBalanco_Scroll(object sender, EventArgs e)
+        {
+
+            try
+            {
+                this.atualizarFltBalanco();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
+        }
 
         #endregion Eventos
+
     }
 }
