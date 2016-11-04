@@ -3,6 +3,7 @@ using System.Threading;
 using Ardrum.Dominio;
 using CSCore;
 using CSCore.Codecs;
+using CSCore.DSP;
 using CSCore.SoundOut;
 using DigoFramework.Service;
 
@@ -135,10 +136,7 @@ namespace Ardrum.Service
                 return null;
             }
 
-            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio)
-                .ToSampleSource()
-                .ToMono()
-                .ToWaveSource();
+            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio).ToSampleSource().ToMono().ToWaveSource();
 
             return objWaveResultado;
         }
@@ -165,7 +163,12 @@ namespace Ardrum.Service
                 return;
             }
 
-            this.objWave.SetPosition(TimeSpan.Zero);
+            if (PlaybackState.Playing.Equals(this.objSoundOut.PlaybackState))
+            {
+                this.objSoundOut.Stop();
+                this.objWave.SetPosition(TimeSpan.Zero);
+            }
+
             this.objSoundOut.Play();
             this.intToqueVolume = 0;
         }
