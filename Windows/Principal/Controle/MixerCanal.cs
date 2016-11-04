@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Windows.Forms;
 using Ardrum.Dominio;
+using CSCore.Codecs;
 using DigoFramework;
 
 namespace Ardrum.Controle
@@ -115,6 +117,23 @@ namespace Ardrum.Controle
             base.inicializar();
 
             this.Size = new Size(60, 200);
+
+            this.ofdDirAudio.Filter = CodecFactory.SupportedFilesFilterEn;
+        }
+
+        private void atualizarDirAudio()
+        {
+            if (this.pad == null)
+            {
+                return;
+            }
+
+            if (!DialogResult.OK.Equals(this.ofdDirAudio.ShowDialog()))
+            {
+                return;
+            }
+
+            this.pad.dirAudio = this.ofdDirAudio.FileName;
         }
 
         private void atualizarVolume()
@@ -151,6 +170,18 @@ namespace Ardrum.Controle
         #endregion Métodos
 
         #region Eventos
+
+        private void btnAudio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.atualizarDirAudio();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
+        }
 
         private void tcbVolume_Scroll(object sender, System.EventArgs e)
         {

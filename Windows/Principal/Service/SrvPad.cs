@@ -3,7 +3,6 @@ using System.Threading;
 using Ardrum.Dominio;
 using CSCore;
 using CSCore.Codecs;
-using CSCore.DSP;
 using CSCore.SoundOut;
 using DigoFramework.Service;
 
@@ -83,6 +82,11 @@ namespace Ardrum.Service
 
                 return _objWave;
             }
+
+            set
+            {
+                _objWave = value;
+            }
         }
 
         #endregion Atributos
@@ -153,7 +157,8 @@ namespace Ardrum.Service
                 return;
             }
 
-            pad.onDecVolumeChanged += this.pad_onDecVolumeChanged;
+            pad.onDirAudioChanged += this.pad_onDirAudioChanged;
+            pad.onFltVolumeChanged += this.pad_onFltVolumeChanged;
         }
 
         private void tocar()
@@ -177,7 +182,14 @@ namespace Ardrum.Service
 
         #region Eventos
 
-        private void pad_onDecVolumeChanged(object sender, EventArgs e)
+        private void pad_onDirAudioChanged(object sender, EventArgs e)
+        {
+            this.objWave.Dispose();
+
+            this.objWave = null;
+        }
+
+        private void pad_onFltVolumeChanged(object sender, EventArgs e)
         {
             this.objSoundOut.Volume = this.pad.fltVolume;
         }

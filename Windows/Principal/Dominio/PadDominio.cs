@@ -24,7 +24,14 @@ namespace Ardrum.Dominio
 
             set
             {
+                if (_dirAudio == value)
+                {
+                    return;
+                }
+
                 _dirAudio = value;
+
+                this.setDirAudio(_dirAudio);
             }
         }
 
@@ -82,16 +89,23 @@ namespace Ardrum.Dominio
 
         #region Métodos
 
+        private void setDirAudio(string dirAudio)
+        {
+            this.onDirAudioChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         private void setFltVolume(float decVolume)
         {
-            this.onDecVolumeChanged?.Invoke(this, EventArgs.Empty);
+            this.onFltVolumeChanged?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion Métodos
 
         #region Eventos
 
-        public event EventHandler onDecVolumeChanged;
+        public event EventHandler onDirAudioChanged;
+
+        public event EventHandler onFltVolumeChanged;
 
         #endregion Eventos
     }

@@ -36,6 +36,7 @@
             this.btnSolo = new Ardrum.Controle.BotaoArdrum();
             this.btnAudio = new Ardrum.Controle.BotaoArdrum();
             this.ctrLinha = new DigoFramework.Controle.Diverso.Linha();
+            this.ofdDirAudio = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.tcbPan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcbVolume)).BeginInit();
             this.pnlComando.SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             this.tcbPan.AutoSize = false;
             this.tcbPan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tcbPan.Enabled = false;
             this.tcbPan.Location = new System.Drawing.Point(1, 16);
             this.tcbPan.Margin = new System.Windows.Forms.Padding(2);
             this.tcbPan.Name = "tcbPan";
@@ -124,6 +126,7 @@
             this.btnAudio.Size = new System.Drawing.Size(24, 20);
             this.btnAudio.strTitulo = null;
             this.btnAudio.TabIndex = 3;
+            this.btnAudio.Click += new System.EventHandler(this.btnAudio_Click);
             // 
             // ctrLinha
             // 
@@ -131,6 +134,10 @@
             this.ctrLinha.Dock = System.Windows.Forms.DockStyle.Left;
             this.ctrLinha.Name = "ctrLinha";
             this.ctrLinha.TabIndex = 4;
+            // 
+            // ofdDirAudio
+            // 
+            this.ofdDirAudio.FileName = "openFileDialog1";
             // 
             // MixerCanal
             // 
@@ -161,5 +168,6 @@
         private BotaoArdrum btnAudio;
         private BotaoArdrum btnMute;
         private BotaoArdrum btnSolo;
+        private System.Windows.Forms.OpenFileDialog ofdDirAudio;
     }
 }
