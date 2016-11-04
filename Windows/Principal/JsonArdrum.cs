@@ -13,7 +13,7 @@ namespace Ardrum
 
         private static JsonArdrum _i;
 
-        public static JsonArdrum i
+        public new static JsonArdrum i
         {
             get
             {

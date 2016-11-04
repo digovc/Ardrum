@@ -112,28 +112,28 @@ namespace Ardrum.Dominio
 
         private void setDirAudio(string dirAudio)
         {
-            this.onDirAudioChanged?.Invoke(this, EventArgs.Empty);
+            this.onDirAudioChanged?.Invoke(this, dirAudio);
         }
 
         private void setFltBalanco(float fltBalanco)
         {
-            this.onFltBalancoChanged?.Invoke(this, EventArgs.Empty);
+            this.onFltBalancoChanged?.Invoke(this, fltBalanco);
         }
 
-        private void setFltVolume(float decVolume)
+        private void setFltVolume(float fltVolume)
         {
-            this.onFltVolumeChanged?.Invoke(this, EventArgs.Empty);
+            this.onFltVolumeChanged?.Invoke(this, fltVolume);
         }
 
         #endregion Métodos
 
         #region Eventos
 
-        public event EventHandler onDirAudioChanged;
+        public event EventHandler<string> onDirAudioChanged;
 
-        public event EventHandler onFltBalancoChanged;
+        public event EventHandler<float> onFltBalancoChanged;
 
-        public event EventHandler onFltVolumeChanged;
+        public event EventHandler<float> onFltVolumeChanged;
 
         #endregion Eventos
     }

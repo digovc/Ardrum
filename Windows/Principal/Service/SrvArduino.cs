@@ -88,6 +88,13 @@ namespace Ardrum.Service
 
         #region Métodos
 
+        public override void parar()
+        {
+            base.parar();
+
+            this.desconectar();
+        }
+
         protected override void servico()
         {
             this.conectar();
@@ -117,13 +124,6 @@ namespace Ardrum.Service
             {
                 this.enmStatus = EnmStatus.ERRO;
             }
-        }
-
-        public override void parar()
-        {
-            base.parar();
-
-            this.desconectar();
         }
 
         private void desconectar()
@@ -183,14 +183,14 @@ namespace Ardrum.Service
 
         private void setEnmStatus(EnmStatus enmStatus)
         {
-            this.onEnmStatusChanged?.Invoke(this, EventArgs.Empty);
+            this.onEnmStatusChanged?.Invoke(this, enmStatus);
         }
 
         #endregion Métodos
 
         #region Eventos
 
-        public event EventHandler onEnmStatusChanged;
+        public event EventHandler<EnmStatus> onEnmStatusChanged;
 
         #endregion Eventos
     }

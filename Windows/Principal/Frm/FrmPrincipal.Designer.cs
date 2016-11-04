@@ -55,6 +55,7 @@
             this.mxcMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.mxcMaster.booControlarBalanco = false;
             this.mxcMaster.booLinhaDireita = true;
+            this.mxcMaster.booMostrarComando = false;
             this.mxcMaster.Dock = System.Windows.Forms.DockStyle.Left;
             this.mxcMaster.fltVolume = 0.8F;
             this.mxcMaster.ForeColor = System.Drawing.Color.White;

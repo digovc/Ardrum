@@ -225,17 +225,17 @@ namespace Ardrum.Service
 
         #region Eventos
 
-        private void pad_onDirAudioChanged(object sender, EventArgs e)
+        private void pad_onDirAudioChanged(object sender, string dirAudio)
         {
             this.reiniciarObjWave();
         }
 
-        private void pad_onFltBalancoChanged(object sender, EventArgs e)
+        private void pad_onFltBalancoChanged(object sender, float fltBalanco)
         {
             this.reiniciarObjWave();
         }
 
-        private void pad_onFltVolumeChanged(object sender, EventArgs e)
+        private void pad_onFltVolumeChanged(object sender, float fltVolume)
         {
             this.objSoundOut.Volume = this.pad.fltVolume;
         }

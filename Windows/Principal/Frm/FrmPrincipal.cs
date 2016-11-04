@@ -130,7 +130,7 @@ namespace Ardrum.Frm
             }
         }
 
-        private void Arduino_onEnmStatusChanged(object sender, EventArgs e)
+        private void Arduino_onEnmStatusChanged(object sender, SrvArduino.EnmStatus enmStatus)
         {
             try
             {

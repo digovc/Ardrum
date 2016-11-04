@@ -18,6 +18,7 @@ namespace Ardrum.Controle
 
         private bool _booControlarBalanco = true;
         private bool _booLinhaDireita;
+        private bool _booMostrarComando = true;
         private float _fltVolume;
         private PadDominio _pad;
         private string _strTitulo = "Canal ???";
@@ -61,6 +62,27 @@ namespace Ardrum.Controle
                 _booLinhaDireita = value;
 
                 this.setBooLinhaDireita(_booLinhaDireita);
+            }
+        }
+
+        [DisplayName("Mostrar comando")]
+        public bool booMostrarComando
+        {
+            get
+            {
+                return _booMostrarComando;
+            }
+
+            set
+            {
+                if (_booMostrarComando == value)
+                {
+                    return;
+                }
+
+                _booMostrarComando = value;
+
+                this.setBooMostrarComando(_booMostrarComando);
             }
         }
 
@@ -202,6 +224,8 @@ namespace Ardrum.Controle
             }
 
             this.pad.fltVolume = this.fltVolume;
+
+            this.onFltVolumeChanged?.Invoke(this, this.fltVolume);
         }
 
         private float getFltVolume()
@@ -217,6 +241,11 @@ namespace Ardrum.Controle
         private void setBooLinhaDireita(bool booLinhaDireita)
         {
             this.ctrLinha.Dock = booLinhaDireita ? DockStyle.Right : DockStyle.Left;
+        }
+
+        private void setBooMostrarComando(bool booMostrarComando)
+        {
+            this.pnlComando.Visible = booMostrarComando;
         }
 
         private void setFltVolume(float fltVolume)
@@ -282,6 +311,8 @@ namespace Ardrum.Controle
                 new Erro("Erro inesperado.\n", ex);
             }
         }
+
+        public event EventHandler<float> onFltVolumeChanged;
 
         #endregion Eventos
     }
