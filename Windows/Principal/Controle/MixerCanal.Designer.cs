@@ -32,10 +32,10 @@
             this.tcbVolume = new System.Windows.Forms.TrackBar();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlComando = new System.Windows.Forms.Panel();
-            this.btnMute = new System.Windows.Forms.Button();
-            this.btnSolo = new System.Windows.Forms.Button();
-            this.btnAudio = new System.Windows.Forms.Button();
             this.ctrLinha = new DigoFramework.Controle.Diverso.Linha();
+            this.btnAudio = new Ardrum.Controle.BotaoArdrum();
+            this.btnSolo = new Ardrum.Controle.BotaoArdrum();
+            this.btnMute = new Ardrum.Controle.BotaoArdrum();
             ((System.ComponentModel.ISupportInitialize)(this.tcbPan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcbVolume)).BeginInit();
             this.pnlComando.SuspendLayout();
@@ -60,6 +60,7 @@
             this.tcbVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tcbVolume.Size = new System.Drawing.Size(25, 205);
             this.tcbVolume.TabIndex = 1;
+            this.tcbVolume.Value = 8;
             // 
             // lblTitulo
             // 
@@ -83,42 +84,6 @@
             this.pnlComando.Size = new System.Drawing.Size(49, 205);
             this.pnlComando.TabIndex = 3;
             // 
-            // btnMute
-            // 
-            this.btnMute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
-            this.btnMute.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMute.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
-            this.btnMute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMute.Location = new System.Drawing.Point(10, 60);
-            this.btnMute.Name = "btnMute";
-            this.btnMute.Size = new System.Drawing.Size(29, 25);
-            this.btnMute.TabIndex = 2;
-            this.btnMute.UseVisualStyleBackColor = false;
-            // 
-            // btnSolo
-            // 
-            this.btnSolo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
-            this.btnSolo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSolo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
-            this.btnSolo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSolo.Location = new System.Drawing.Point(10, 35);
-            this.btnSolo.Name = "btnSolo";
-            this.btnSolo.Size = new System.Drawing.Size(29, 25);
-            this.btnSolo.TabIndex = 1;
-            this.btnSolo.UseVisualStyleBackColor = false;
-            // 
-            // btnAudio
-            // 
-            this.btnAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
-            this.btnAudio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAudio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
-            this.btnAudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAudio.Location = new System.Drawing.Point(10, 10);
-            this.btnAudio.Name = "btnAudio";
-            this.btnAudio.Size = new System.Drawing.Size(29, 25);
-            this.btnAudio.TabIndex = 0;
-            this.btnAudio.UseVisualStyleBackColor = false;
-            // 
             // ctrLinha
             // 
             this.ctrLinha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(111)))), ((int)(((byte)(144)))));
@@ -126,9 +91,39 @@
             this.ctrLinha.Name = "ctrLinha";
             this.ctrLinha.TabIndex = 4;
             // 
+            // btnAudio
+            // 
+            this.btnAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
+            this.btnAudio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAudio.ForeColor = System.Drawing.Color.White;
+            this.btnAudio.Location = new System.Drawing.Point(10, 10);
+            this.btnAudio.Name = "btnAudio";
+            this.btnAudio.Size = new System.Drawing.Size(29, 25);
+            this.btnAudio.TabIndex = 3;
+            // 
+            // btnSolo
+            // 
+            this.btnSolo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
+            this.btnSolo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSolo.ForeColor = System.Drawing.Color.White;
+            this.btnSolo.Location = new System.Drawing.Point(10, 35);
+            this.btnSolo.Name = "btnSolo";
+            this.btnSolo.Size = new System.Drawing.Size(29, 25);
+            this.btnSolo.TabIndex = 4;
+            // 
+            // btnMute
+            // 
+            this.btnMute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
+            this.btnMute.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMute.ForeColor = System.Drawing.Color.White;
+            this.btnMute.Location = new System.Drawing.Point(10, 60);
+            this.btnMute.Name = "btnMute";
+            this.btnMute.Size = new System.Drawing.Size(29, 25);
+            this.btnMute.TabIndex = 5;
+            // 
             // MixerCanal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlComando);
             this.Controls.Add(this.tcbVolume);
@@ -150,9 +145,9 @@
         private System.Windows.Forms.TrackBar tcbVolume;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlComando;
-        private System.Windows.Forms.Button btnAudio;
-        private System.Windows.Forms.Button btnMute;
-        private System.Windows.Forms.Button btnSolo;
         private DigoFramework.Controle.Diverso.Linha ctrLinha;
+        private BotaoArdrum btnAudio;
+        private BotaoArdrum btnMute;
+        private BotaoArdrum btnSolo;
     }
 }

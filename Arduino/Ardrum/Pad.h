@@ -16,6 +16,12 @@ class Pad
 
 private:
 
+	bool _booEnviar;
+
+	bool getBooEnviar();
+
+	void setBooEnviar(bool booEnviar);
+
 	bool _booTocou;
 
 	bool getBooTocou();
@@ -23,9 +29,9 @@ private:
 	void setBooTocou(bool booTocou);
 
 	unsigned int _intForca;
-	
+
 	unsigned int getIntForca();
-	
+
 	void setIntForca(unsigned int intForca);
 
 	unsigned int _intPino;
@@ -61,7 +67,7 @@ private:
 
 	void enviar();
 
-	void verificar(const unsigned long lngMillis);
+	void verificarToque(const unsigned long lngMillis);
 
 #pragma endregion
 };

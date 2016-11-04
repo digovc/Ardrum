@@ -29,104 +29,93 @@
         private void InitializeComponent()
         {
             this.pnlMixer = new System.Windows.Forms.Panel();
-            this.mxcChimbal = new Ardrum.Controle.MixerCanal();
-            this.mxcTarol = new Ardrum.Controle.MixerCanal();
-            this.mxcBumbo = new Ardrum.Controle.MixerCanal();
-            this.mxcTomA = new Ardrum.Controle.MixerCanal();
-            this.mxcTomB = new Ardrum.Controle.MixerCanal();
-            this.mxcPratoConducao = new Ardrum.Controle.MixerCanal();
-            this.mxcPratoAtaque = new Ardrum.Controle.MixerCanal();
+            this.mxcMaster = new Ardrum.Controle.MixerCanal();
+            this.pnlStatus = new System.Windows.Forms.Panel();
+            this.lblArduinoStatus = new System.Windows.Forms.Label();
+            this.pnlComando = new System.Windows.Forms.Panel();
+            this.btnConectar = new Ardrum.Controle.BotaoArdrum();
             this.pnlMixer.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
+            this.pnlComando.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMixer
             // 
-            this.pnlMixer.Controls.Add(this.mxcChimbal);
-            this.pnlMixer.Controls.Add(this.mxcTarol);
-            this.pnlMixer.Controls.Add(this.mxcBumbo);
-            this.pnlMixer.Controls.Add(this.mxcTomA);
-            this.pnlMixer.Controls.Add(this.mxcTomB);
-            this.pnlMixer.Controls.Add(this.mxcPratoConducao);
-            this.pnlMixer.Controls.Add(this.mxcPratoAtaque);
+            this.pnlMixer.Controls.Add(this.mxcMaster);
             this.pnlMixer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMixer.Location = new System.Drawing.Point(10, 10);
+            this.pnlMixer.Location = new System.Drawing.Point(0, 30);
             this.pnlMixer.Name = "pnlMixer";
-            this.pnlMixer.Size = new System.Drawing.Size(564, 241);
+            this.pnlMixer.Padding = new System.Windows.Forms.Padding(10);
+            this.pnlMixer.Size = new System.Drawing.Size(828, 244);
             this.pnlMixer.TabIndex = 0;
             // 
-            // mxcChimbal
+            // mxcMaster
             // 
-            this.mxcChimbal.booLinhaDireita = false;
-            this.mxcChimbal.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcChimbal.Location = new System.Drawing.Point(114, 0);
-            this.mxcChimbal.Name = "mxcChimbal";
-            this.mxcChimbal.strTitulo = "Pad 1";
-            this.mxcChimbal.TabIndex = 6;
+            this.mxcMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
+            this.mxcMaster.booLinhaDireita = true;
+            this.mxcMaster.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mxcMaster.ForeColor = System.Drawing.Color.White;
+            this.mxcMaster.Location = new System.Drawing.Point(10, 10);
+            this.mxcMaster.Margin = new System.Windows.Forms.Padding(4);
+            this.mxcMaster.Name = "mxcMaster";
+            this.mxcMaster.pad = null;
+            this.mxcMaster.strTitulo = "Master";
+            this.mxcMaster.TabIndex = 0;
             // 
-            // mxcTarol
+            // pnlStatus
             // 
-            this.mxcTarol.booLinhaDireita = false;
-            this.mxcTarol.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTarol.Location = new System.Drawing.Point(189, 0);
-            this.mxcTarol.Name = "mxcTarol";
-            this.mxcTarol.strTitulo = "Pad 1";
-            this.mxcTarol.TabIndex = 5;
+            this.pnlStatus.Controls.Add(this.lblArduinoStatus);
+            this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlStatus.Location = new System.Drawing.Point(0, 274);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(828, 25);
+            this.pnlStatus.TabIndex = 9;
             // 
-            // mxcBumbo
+            // lblArduinoStatus
             // 
-            this.mxcBumbo.booLinhaDireita = false;
-            this.mxcBumbo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcBumbo.Location = new System.Drawing.Point(264, 0);
-            this.mxcBumbo.Name = "mxcBumbo";
-            this.mxcBumbo.strTitulo = "Pad 1";
-            this.mxcBumbo.TabIndex = 4;
+            this.lblArduinoStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblArduinoStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblArduinoStatus.Name = "lblArduinoStatus";
+            this.lblArduinoStatus.Size = new System.Drawing.Size(150, 25);
+            this.lblArduinoStatus.TabIndex = 0;
+            this.lblArduinoStatus.Text = "Desconectado";
+            this.lblArduinoStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // mxcTomA
+            // pnlComando
             // 
-            this.mxcTomA.booLinhaDireita = false;
-            this.mxcTomA.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTomA.Location = new System.Drawing.Point(339, 0);
-            this.mxcTomA.Name = "mxcTomA";
-            this.mxcTomA.strTitulo = "Pad 1";
-            this.mxcTomA.TabIndex = 3;
+            this.pnlComando.Controls.Add(this.btnConectar);
+            this.pnlComando.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlComando.Location = new System.Drawing.Point(0, 0);
+            this.pnlComando.Name = "pnlComando";
+            this.pnlComando.Size = new System.Drawing.Size(828, 30);
+            this.pnlComando.TabIndex = 1;
             // 
-            // mxcTomB
+            // btnConectar
             // 
-            this.mxcTomB.booLinhaDireita = false;
-            this.mxcTomB.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcTomB.Location = new System.Drawing.Point(414, 0);
-            this.mxcTomB.Name = "mxcTomB";
-            this.mxcTomB.strTitulo = "Pad 1";
-            this.mxcTomB.TabIndex = 2;
-            // 
-            // mxcPratoConducao
-            // 
-            this.mxcPratoConducao.booLinhaDireita = false;
-            this.mxcPratoConducao.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mxcPratoConducao.Location = new System.Drawing.Point(489, 0);
-            this.mxcPratoConducao.Name = "mxcPratoConducao";
-            this.mxcPratoConducao.strTitulo = "Pad 1";
-            this.mxcPratoConducao.TabIndex = 1;
-            // 
-            // mxcPratoAtaque
-            // 
-            this.mxcPratoAtaque.booLinhaDireita = true;
-            this.mxcPratoAtaque.Dock = System.Windows.Forms.DockStyle.Left;
-            this.mxcPratoAtaque.Location = new System.Drawing.Point(0, 0);
-            this.mxcPratoAtaque.Name = "mxcPratoAtaque";
-            this.mxcPratoAtaque.strTitulo = "Master";
-            this.mxcPratoAtaque.TabIndex = 0;
+            this.btnConectar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
+            this.btnConectar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnConectar.ForeColor = System.Drawing.Color.White;
+            this.btnConectar.Location = new System.Drawing.Point(0, 0);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(150, 30);
+            this.btnConectar.strTitulo = "Conectar";
+            this.btnConectar.TabIndex = 0;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // FrmPrincipal
             // 
-            this.ClientSize = new System.Drawing.Size(584, 261);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(828, 299);
             this.Controls.Add(this.pnlMixer);
+            this.Controls.Add(this.pnlComando);
+            this.Controls.Add(this.pnlStatus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
-            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "FrmPrincipal";
             this.pnlMixer.ResumeLayout(false);
+            this.pnlStatus.ResumeLayout(false);
+            this.pnlComando.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,12 +123,10 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMixer;
-        private Controle.MixerCanal mxcPratoAtaque;
-        private Controle.MixerCanal mxcPratoConducao;
-        private Controle.MixerCanal mxcChimbal;
-        private Controle.MixerCanal mxcTarol;
-        private Controle.MixerCanal mxcBumbo;
-        private Controle.MixerCanal mxcTomA;
-        private Controle.MixerCanal mxcTomB;
+        private Controle.MixerCanal mxcMaster;
+        private System.Windows.Forms.Panel pnlStatus;
+        private System.Windows.Forms.Label lblArduinoStatus;
+        private System.Windows.Forms.Panel pnlComando;
+        private Controle.BotaoArdrum btnConectar;
     }
 }

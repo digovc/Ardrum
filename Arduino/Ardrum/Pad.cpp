@@ -2,6 +2,16 @@
 
 #pragma region Atributos
 
+bool Pad::getBooEnviar()
+{
+	return _booEnviar;
+}
+
+void Pad::setBooEnviar(bool booRepousou)
+{
+	_booEnviar = booRepousou;
+}
+
 bool Pad::getBooTocou()
 {
 	return _booTocou;
@@ -56,18 +66,24 @@ Pad::Pad()
 
 void Pad::enviar()
 {
+	if (!this->getBooEnviar())
+	{
+		return;
+	}
+
 	if (!this->getBooTocou())
 	{
 		return;
 	}
 
 	Server::getI()->enviarToque(this->getIntPino(), this->getIntForca());
-	
-	this->setBooTocou(false);
+
+	this->setBooEnviar(false);
 }
 
 void Pad::iniciar(unsigned int intPino)
 {
+	this->setBooEnviar(true);
 	this->setBooTocou(false);
 	this->setIntPino(intPino);
 	this->setLngUltimoToque(-1);
@@ -75,13 +91,13 @@ void Pad::iniciar(unsigned int intPino)
 
 void Pad::loop(const unsigned long lngMillis)
 {
-	this->verificar(lngMillis);
+	this->verificarToque(lngMillis);
 	this->enviar();
 }
 
-void Pad::verificar(const unsigned long lngMillis)
+void Pad::verificarToque(const unsigned long lngMillis)
 {
-	if (this->getBooTocou())
+	if (this->getBooEnviar() && this->getBooTocou())
 	{
 		return;
 	}
@@ -92,6 +108,13 @@ void Pad::verificar(const unsigned long lngMillis)
 	}
 
 	this->setIntForca(analogRead(this->getIntPino()));
+
+	if (this->getIntForca() < 1)
+	{
+		this->setBooEnviar(true);
+		this->setBooTocou(false);
+		return;
+	}
 
 	if (this->getIntForca() < Config::INT_PAD_THRESHOLD)
 	{

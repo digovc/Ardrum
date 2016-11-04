@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
+using Ardrum.Dominio;
 
 namespace Ardrum.Controle
 {
@@ -12,6 +13,7 @@ namespace Ardrum.Controle
         #region Atributos
 
         private bool _booLinhaDireita;
+        private PadDominio _pad;
         private string _strTitulo = "Canal ???";
 
         [DisplayName("Linha lateral")]
@@ -32,6 +34,27 @@ namespace Ardrum.Controle
                 _booLinhaDireita = value;
 
                 this.setBooLinhaDireita(_booLinhaDireita);
+            }
+        }
+
+        [Browsable(false)]
+        public PadDominio pad
+        {
+            get
+            {
+                return _pad;
+            }
+
+            set
+            {
+                if (_pad == value)
+                {
+                    return;
+                }
+
+                _pad = value;
+
+                this.setPad(_pad);
             }
         }
 
@@ -77,7 +100,7 @@ namespace Ardrum.Controle
 
         public MixerCanal()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         #endregion Construtores
@@ -87,6 +110,16 @@ namespace Ardrum.Controle
         private void setBooLinhaDireita(bool booLinhaDireita)
         {
             this.ctrLinha.Dock = booLinhaDireita ? System.Windows.Forms.DockStyle.Right : System.Windows.Forms.DockStyle.Left;
+        }
+
+        private void setPad(PadDominio pad)
+        {
+            if (pad == null)
+            {
+                return;
+            }
+
+            this.strTitulo = pad.strNome;
         }
 
         private void setStrTitulo(string strTitulo)

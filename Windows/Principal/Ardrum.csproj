@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSCore">
+      <HintPath>Lib\CSCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppArdrum.cs" />
+    <Compile Include="Controle\BotaoArdrum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controle\BotaoArdrum.Designer.cs">
+      <DependentUpon>BotaoArdrum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dominio\ArdrumDominioBase.cs" />
+    <Compile Include="Dominio\PadDominio.cs" />
+    <Compile Include="Service\SrvArduino.cs" />
+    <Compile Include="ConfigArdrum.cs" />
     <Compile Include="Controle\MixerCanal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,8 +91,12 @@
     <Compile Include="Frm\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service\SrvPad.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controle\BotaoArdrum.resx">
+      <DependentUpon>BotaoArdrum.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controle\MixerCanal.resx">
       <DependentUpon>MixerCanal.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +135,7 @@
       <Name>DigoFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
