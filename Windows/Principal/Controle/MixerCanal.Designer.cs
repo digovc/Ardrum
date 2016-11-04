@@ -46,9 +46,9 @@
             this.tcbPan.AutoSize = false;
             this.tcbPan.Dock = System.Windows.Forms.DockStyle.Top;
             this.tcbPan.Location = new System.Drawing.Point(1, 16);
-            this.tcbPan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcbPan.Margin = new System.Windows.Forms.Padding(2);
             this.tcbPan.Name = "tcbPan";
-            this.tcbPan.Size = new System.Drawing.Size(55, 20);
+            this.tcbPan.Size = new System.Drawing.Size(59, 20);
             this.tcbPan.TabIndex = 0;
             this.tcbPan.Value = 5;
             // 
@@ -56,11 +56,11 @@
             // 
             this.tcbVolume.AutoSize = false;
             this.tcbVolume.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tcbVolume.Location = new System.Drawing.Point(37, 36);
-            this.tcbVolume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcbVolume.Location = new System.Drawing.Point(41, 36);
+            this.tcbVolume.Margin = new System.Windows.Forms.Padding(2);
             this.tcbVolume.Name = "tcbVolume";
             this.tcbVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tcbVolume.Size = new System.Drawing.Size(19, 167);
+            this.tcbVolume.Size = new System.Drawing.Size(19, 164);
             this.tcbVolume.TabIndex = 1;
             this.tcbVolume.Value = 8;
             this.tcbVolume.Scroll += new System.EventHandler(this.tcbVolume_Scroll);
@@ -71,7 +71,7 @@
             this.lblTitulo.Location = new System.Drawing.Point(1, 0);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(55, 16);
+            this.lblTitulo.Size = new System.Drawing.Size(59, 16);
             this.lblTitulo.TabIndex = 2;
             this.lblTitulo.Text = "Canal ???";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,10 +83,10 @@
             this.pnlComando.Controls.Add(this.btnAudio);
             this.pnlComando.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlComando.Location = new System.Drawing.Point(1, 36);
-            this.pnlComando.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlComando.Margin = new System.Windows.Forms.Padding(2);
             this.pnlComando.Name = "pnlComando";
-            this.pnlComando.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.pnlComando.Size = new System.Drawing.Size(36, 167);
+            this.pnlComando.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlComando.Size = new System.Drawing.Size(40, 164);
             this.pnlComando.TabIndex = 3;
             // 
             // btnMute
@@ -97,7 +97,7 @@
             this.btnMute.Location = new System.Drawing.Point(8, 48);
             this.btnMute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMute.Name = "btnMute";
-            this.btnMute.Size = new System.Drawing.Size(20, 20);
+            this.btnMute.Size = new System.Drawing.Size(24, 20);
             this.btnMute.strTitulo = null;
             this.btnMute.TabIndex = 5;
             // 
@@ -109,7 +109,7 @@
             this.btnSolo.Location = new System.Drawing.Point(8, 28);
             this.btnSolo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSolo.Name = "btnSolo";
-            this.btnSolo.Size = new System.Drawing.Size(20, 20);
+            this.btnSolo.Size = new System.Drawing.Size(24, 20);
             this.btnSolo.strTitulo = null;
             this.btnSolo.TabIndex = 4;
             // 
@@ -121,7 +121,7 @@
             this.btnAudio.Location = new System.Drawing.Point(8, 8);
             this.btnAudio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAudio.Name = "btnAudio";
-            this.btnAudio.Size = new System.Drawing.Size(20, 20);
+            this.btnAudio.Size = new System.Drawing.Size(24, 20);
             this.btnAudio.strTitulo = null;
             this.btnAudio.TabIndex = 3;
             // 
@@ -141,9 +141,9 @@
             this.Controls.Add(this.tcbPan);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.ctrLinha);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MixerCanal";
-            this.Size = new System.Drawing.Size(56, 203);
+            this.Size = new System.Drawing.Size(60, 200);
             ((System.ComponentModel.ISupportInitialize)(this.tcbPan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcbVolume)).EndInit();
             this.pnlComando.ResumeLayout(false);

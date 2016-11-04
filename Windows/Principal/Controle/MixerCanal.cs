@@ -40,6 +40,7 @@ namespace Ardrum.Controle
         }
 
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PadDominio pad
         {
             get
@@ -108,6 +109,13 @@ namespace Ardrum.Controle
         #endregion Construtores
 
         #region Métodos
+
+        protected override void inicializar()
+        {
+            base.inicializar();
+
+            this.Size = new Size(60, 200);
+        }
 
         private void atualizarVolume()
         {
