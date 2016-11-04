@@ -1,4 +1,6 @@
-﻿namespace Ardrum.Dominio
+﻿using System;
+
+namespace Ardrum.Dominio
 {
     public class PadDominio : ArdrumDominioBase
     {
@@ -9,6 +11,7 @@
         #region Atributos
 
         private string _dirAudio;
+        private float _fltVolume = 0.75f;
         private int _intPinoNumero;
         private string _strNome;
 
@@ -22,6 +25,26 @@
             set
             {
                 _dirAudio = value;
+            }
+        }
+
+        public float fltVolume
+        {
+            get
+            {
+                return _fltVolume;
+            }
+
+            set
+            {
+                if (_fltVolume == value)
+                {
+                    return;
+                }
+
+                _fltVolume = value;
+
+                this.setFltVolume(_fltVolume);
             }
         }
 
@@ -59,9 +82,16 @@
 
         #region Métodos
 
+        private void setFltVolume(float decVolume)
+        {
+            this.onDecVolumeChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         #endregion Métodos
 
         #region Eventos
+
+        public event EventHandler onDecVolumeChanged;
 
         #endregion Eventos
     }

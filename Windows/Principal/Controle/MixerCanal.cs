@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using Ardrum.Dominio;
+using DigoFramework;
 
 namespace Ardrum.Controle
 {
@@ -107,6 +109,16 @@ namespace Ardrum.Controle
 
         #region Métodos
 
+        private void atualizarVolume()
+        {
+            if (this.pad == null)
+            {
+                return;
+            }
+
+            this.pad.fltVolume = (this.tcbVolume.Value / this.tcbVolume.Maximum);
+        }
+
         private void setBooLinhaDireita(bool booLinhaDireita)
         {
             this.ctrLinha.Dock = booLinhaDireita ? System.Windows.Forms.DockStyle.Right : System.Windows.Forms.DockStyle.Left;
@@ -120,6 +132,7 @@ namespace Ardrum.Controle
             }
 
             this.strTitulo = pad.strNome;
+            this.tcbVolume.Value = (int)(pad.fltVolume * this.tcbVolume.Value);
         }
 
         private void setStrTitulo(string strTitulo)
@@ -130,6 +143,18 @@ namespace Ardrum.Controle
         #endregion Métodos
 
         #region Eventos
+
+        private void tcbVolume_Scroll(object sender, System.EventArgs e)
+        {
+            try
+            {
+                this.atualizarVolume();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
+        }
 
         #endregion Eventos
     }

@@ -30,7 +30,14 @@ namespace Ardrum.Service
 
             set
             {
+                if (_pad == value)
+                {
+                    return;
+                }
+
                 _pad = value;
+
+                this.setPad(_pad);
             }
         }
 
@@ -107,15 +114,27 @@ namespace Ardrum.Service
 
         private ISoundOut getObjSoundOut()
         {
+            if (this.pad == null)
+            {
+                return null;
+            }
+
             ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 25, Device = AppArdrum.i.objDevice };
 
             objSoundOutResultado.Initialize(this.objWave);
+
+            objSoundOutResultado.Volume = this.pad.fltVolume;
 
             return objSoundOutResultado;
         }
 
         private IWaveSource getObjWave()
         {
+            if (this.pad == null)
+            {
+                return null;
+            }
+
             IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio)
                 .ToSampleSource()
                 .ToMono()
@@ -127,6 +146,16 @@ namespace Ardrum.Service
         private void loop()
         {
             this.tocar();
+        }
+
+        private void setPad(PadDominio pad)
+        {
+            if (pad == null)
+            {
+                return;
+            }
+
+            pad.onDecVolumeChanged += this.pad_onDecVolumeChanged;
         }
 
         private void tocar()
@@ -144,6 +173,11 @@ namespace Ardrum.Service
         #endregion Métodos
 
         #region Eventos
+
+        private void pad_onDecVolumeChanged(object sender, EventArgs e)
+        {
+            this.objSoundOut.Volume = this.pad.fltVolume;
+        }
 
         #endregion Eventos
     }
