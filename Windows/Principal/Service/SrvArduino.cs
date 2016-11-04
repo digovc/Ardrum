@@ -129,6 +129,7 @@ namespace Ardrum.Service
         private void desconectar()
         {
             this.objSerial.Close();
+            this.objSerial.Dispose();
 
             this.enmStatus = EnmStatus.DESCONECTADO;
         }

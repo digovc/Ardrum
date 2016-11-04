@@ -93,6 +93,23 @@ namespace Ardrum
 
         #region Métodos
 
+        internal void pararServico()
+        {
+            this.objDevice.Dispose();
+
+            if (!SrvArduino.EnmStatus.CONECTADO.Equals(SrvArduino.i.enmStatus))
+            {
+                return;
+            }
+
+            SrvArduino.i.parar();
+
+            foreach (SrvPad srvPad in this.lstSrvPad)
+            {
+                srvPad?.parar();
+            }
+        }
+
         internal void tocar(int intPinoNumero, int intToqueVolume)
         {
             if (intPinoNumero < 0)

@@ -29,6 +29,13 @@ namespace Ardrum.Frm
 
         #region Métodos
 
+        protected override void inicializar()
+        {
+            base.inicializar();
+
+            this.mxcMaster.fltVolume = ConfigArdrum.i.fltMasterVolume;
+        }
+
         protected override void montarLayout()
         {
             base.montarLayout();
@@ -98,18 +105,22 @@ namespace Ardrum.Frm
             this.pnlMixer.Controls.Add(ctrMixerCanal);
         }
 
+        private void processarOnClosing()
+        {
+            this.pararServico();
+            this.salvarConfig();
+        }
+
+        private void pararServico()
+        {
+            AppArdrum.i.pararServico();
+        }
+
         private void salvarConfig()
         {
             ConfigArdrum.i.fltMasterVolume = this.mxcMaster.fltVolume;
 
             ConfigArdrum.i.salvar();
-        }
-
-        protected override void inicializar()
-        {
-            base.inicializar();
-
-            this.mxcMaster.fltVolume = ConfigArdrum.i.fltMasterVolume;
         }
 
         #endregion Métodos
@@ -122,7 +133,7 @@ namespace Ardrum.Frm
 
             try
             {
-                this.salvarConfig();
+                this.processarOnClosing();
             }
             catch (Exception ex)
             {

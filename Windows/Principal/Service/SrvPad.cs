@@ -119,6 +119,15 @@ namespace Ardrum.Service
 
         #region Métodos
 
+        public override void parar()
+        {
+            base.parar();
+
+            this.objPanSource.Dispose();
+            this.objSoundOut.Dispose();
+            this.objWave.Dispose();
+        }
+
         internal void tocar(int intToqueVolume)
         {
             this.intToqueVolume = intToqueVolume;
