@@ -42,7 +42,7 @@
             this.pnlComando.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tcbPan
+            // tcbBalanco
             // 
             this.tcbBalanco.AutoSize = false;
             this.tcbBalanco.Dock = System.Windows.Forms.DockStyle.Top;
@@ -95,36 +95,39 @@
             // 
             this.btnMute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnMute.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMute.ForeColor = System.Drawing.Color.White;
-            this.btnMute.Location = new System.Drawing.Point(8, 48);
+            this.btnMute.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMute.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnMute.Location = new System.Drawing.Point(8, 58);
             this.btnMute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMute.Name = "btnMute";
-            this.btnMute.Size = new System.Drawing.Size(24, 20);
-            this.btnMute.strTitulo = null;
+            this.btnMute.Size = new System.Drawing.Size(24, 25);
+            this.btnMute.strTitulo = "M";
             this.btnMute.TabIndex = 5;
             // 
             // btnSolo
             // 
             this.btnSolo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnSolo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSolo.ForeColor = System.Drawing.Color.White;
-            this.btnSolo.Location = new System.Drawing.Point(8, 28);
+            this.btnSolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSolo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSolo.Location = new System.Drawing.Point(8, 33);
             this.btnSolo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSolo.Name = "btnSolo";
-            this.btnSolo.Size = new System.Drawing.Size(24, 20);
-            this.btnSolo.strTitulo = null;
+            this.btnSolo.Size = new System.Drawing.Size(24, 25);
+            this.btnSolo.strTitulo = "S";
             this.btnSolo.TabIndex = 4;
             // 
             // btnAudio
             // 
             this.btnAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(85)))), ((int)(((byte)(114)))));
             this.btnAudio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAudio.ForeColor = System.Drawing.Color.White;
+            this.btnAudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAudio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAudio.Location = new System.Drawing.Point(8, 8);
             this.btnAudio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAudio.Name = "btnAudio";
-            this.btnAudio.Size = new System.Drawing.Size(24, 20);
-            this.btnAudio.strTitulo = null;
+            this.btnAudio.Size = new System.Drawing.Size(24, 25);
+            this.btnAudio.strTitulo = "A";
             this.btnAudio.TabIndex = 3;
             this.btnAudio.Click += new System.EventHandler(this.btnAudio_Click);
             // 

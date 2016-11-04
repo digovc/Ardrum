@@ -112,16 +112,6 @@ namespace Ardrum.Controle
 
         #region Métodos
 
-        private void atualizarFltBalanco()
-        {
-            if (this.pad == null)
-            {
-                return;
-            }
-
-            this.pad.fltBalanco = (this.tcbBalanco.Value / this.tcbBalanco.Maximum * 2 - 1);
-        }
-
         protected override void inicializar()
         {
             base.inicializar();
@@ -138,12 +128,24 @@ namespace Ardrum.Controle
                 return;
             }
 
+            this.ofdDirAudio.FileName = this.pad.dirAudio;
+
             if (!DialogResult.OK.Equals(this.ofdDirAudio.ShowDialog()))
             {
                 return;
             }
 
             this.pad.dirAudio = this.ofdDirAudio.FileName;
+        }
+
+        private void atualizarFltBalanco()
+        {
+            if (this.pad == null)
+            {
+                return;
+            }
+
+            this.pad.fltBalanco = ((float)this.tcbBalanco.Value / (float)this.tcbBalanco.Maximum * 2 - 1);
         }
 
         private void atualizarVolume()
@@ -153,7 +155,7 @@ namespace Ardrum.Controle
                 return;
             }
 
-            this.pad.fltVolume = (this.tcbVolume.Value / this.tcbVolume.Maximum);
+            this.pad.fltVolume = ((float)this.tcbVolume.Value / (float)this.tcbVolume.Maximum);
         }
 
         private void setBooLinhaDireita(bool booLinhaDireita)
@@ -193,6 +195,18 @@ namespace Ardrum.Controle
             }
         }
 
+        private void tcbBalanco_Scroll(object sender, EventArgs e)
+        {
+            try
+            {
+                this.atualizarFltBalanco();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
+        }
+
         private void tcbVolume_Scroll(object sender, System.EventArgs e)
         {
             try
@@ -204,20 +218,7 @@ namespace Ardrum.Controle
                 new Erro("Erro inesperado.\n", ex);
             }
         }
-        private void tcbBalanco_Scroll(object sender, EventArgs e)
-        {
-
-            try
-            {
-                this.atualizarFltBalanco();
-            }
-            catch (Exception ex)
-            {
-                new Erro("Erro inesperado.\n", ex);
-            }
-        }
 
         #endregion Eventos
-
     }
 }
