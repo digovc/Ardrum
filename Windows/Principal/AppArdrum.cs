@@ -19,7 +19,6 @@ namespace Ardrum
 
         private List<PadDominio> _lstPad;
         private List<SrvPad> _lstSrvPad;
-
         private MMDevice _objDevice;
 
         public new static AppArdrum i
@@ -121,6 +120,16 @@ namespace Ardrum
         }
 
         private List<PadDominio> getLstPad()
+        {
+            if (string.IsNullOrEmpty(ConfigArdrum.i.jsnLstPad))
+            {
+                return this.getLstPadNovo();
+            }
+
+            return JsonArdrum.i.fromJson<List<PadDominio>>(ConfigArdrum.i.jsnLstPad);
+        }
+
+        private List<PadDominio> getLstPadNovo()
         {
             List<PadDominio> lstPadResultado = new List<PadDominio>();
 

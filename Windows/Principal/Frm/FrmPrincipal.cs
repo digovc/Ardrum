@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Ardrum.Controle;
 using Ardrum.Dominio;
 using Ardrum.Service;
+using DigoFramework;
 
 namespace Ardrum.Frm
 {
@@ -91,26 +93,68 @@ namespace Ardrum.Frm
             MixerCanal ctrMixerCanal = new MixerCanal();
 
             ctrMixerCanal.pad = pad;
-            ctrMixerCanal.Dock = System.Windows.Forms.DockStyle.Right;
+            ctrMixerCanal.Dock = DockStyle.Right;
 
             this.pnlMixer.Controls.Add(ctrMixerCanal);
+        }
+
+        private void salvarConfig()
+        {
+            ConfigArdrum.i.fltMasterVolume = this.mxcMaster.fltVolume;
+
+            ConfigArdrum.i.salvar();
+        }
+
+        protected override void inicializar()
+        {
+            base.inicializar();
+
+            this.mxcMaster.fltVolume = ConfigArdrum.i.fltMasterVolume;
         }
 
         #endregion Métodos
 
         #region Eventos
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            try
+            {
+                this.salvarConfig();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
+        }
+
         private void Arduino_onEnmStatusChanged(object sender, EventArgs e)
         {
-            this.Invoke((MethodInvoker)delegate
+            try
             {
-                this.atualizarSerialStatus();
-            });
+                this.Invoke((MethodInvoker)delegate
+                {
+                    this.atualizarSerialStatus();
+                });
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
-            this.conectar();
+            try
+            {
+                this.conectar();
+            }
+            catch (Exception ex)
+            {
+                new Erro("Erro inesperado.\n", ex);
+            }
         }
 
         #endregion Eventos

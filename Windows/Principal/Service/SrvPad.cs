@@ -150,6 +150,11 @@ namespace Ardrum.Service
                 return null;
             }
 
+            if (AppArdrum.i.objDevice == null)
+            {
+                return null;
+            }
+
             ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 50, Device = AppArdrum.i.objDevice };
 
             objSoundOutResultado.Initialize(this.objWave);

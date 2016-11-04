@@ -16,9 +16,32 @@ namespace Ardrum.Controle
 
         #region Atributos
 
+        private bool _booControlarBalanco = true;
         private bool _booLinhaDireita;
+        private float _fltVolume;
         private PadDominio _pad;
         private string _strTitulo = "Canal ???";
+
+        [DisplayName("Controlar balanço")]
+        public bool booControlarBalanco
+        {
+            get
+            {
+                return _booControlarBalanco;
+            }
+
+            set
+            {
+                if (_booControlarBalanco == value)
+                {
+                    return;
+                }
+
+                _booControlarBalanco = value;
+
+                this.setBooControlarBalanco(_booControlarBalanco);
+            }
+        }
 
         [DisplayName("Linha lateral")]
         public bool booLinhaDireita
@@ -38,6 +61,29 @@ namespace Ardrum.Controle
                 _booLinhaDireita = value;
 
                 this.setBooLinhaDireita(_booLinhaDireita);
+            }
+        }
+
+        [DisplayName("Volume")]
+        public float fltVolume
+        {
+            get
+            {
+                _fltVolume = this.getFltVolume();
+
+                return _fltVolume;
+            }
+
+            set
+            {
+                if (_fltVolume == value)
+                {
+                    return;
+                }
+
+                _fltVolume = value;
+
+                this.setFltVolume(_fltVolume);
             }
         }
 
@@ -155,12 +201,27 @@ namespace Ardrum.Controle
                 return;
             }
 
-            this.pad.fltVolume = ((float)this.tcbVolume.Value / (float)this.tcbVolume.Maximum);
+            this.pad.fltVolume = this.fltVolume;
+        }
+
+        private float getFltVolume()
+        {
+            return ((float)this.tcbVolume.Value / (float)this.tcbVolume.Maximum);
+        }
+
+        private void setBooControlarBalanco(bool booControlarBalanco)
+        {
+            this.tcbBalanco.Visible = booControlarBalanco;
         }
 
         private void setBooLinhaDireita(bool booLinhaDireita)
         {
-            this.ctrLinha.Dock = booLinhaDireita ? System.Windows.Forms.DockStyle.Right : System.Windows.Forms.DockStyle.Left;
+            this.ctrLinha.Dock = booLinhaDireita ? DockStyle.Right : DockStyle.Left;
+        }
+
+        private void setFltVolume(float fltVolume)
+        {
+            this.tcbVolume.Value = (int)(fltVolume * this.tcbVolume.Maximum);
         }
 
         private void setPad(PadDominio pad)
@@ -171,7 +232,10 @@ namespace Ardrum.Controle
             }
 
             this.strTitulo = pad.strNome;
-            this.tcbVolume.Value = (int)(pad.fltVolume * this.tcbVolume.Value);
+
+            this.tcbBalanco.Value = (int)Math.Round((pad.fltBalanco + 2) * (this.tcbBalanco.Maximum / 2) - 5);
+
+            this.tcbVolume.Value = (int)(pad.fltVolume * this.tcbVolume.Maximum);
         }
 
         private void setStrTitulo(string strTitulo)

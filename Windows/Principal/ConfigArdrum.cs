@@ -1,4 +1,5 @@
 ﻿using DigoFramework;
+using DigoFramework.Json;
 
 namespace Ardrum
 {
@@ -12,8 +13,9 @@ namespace Ardrum
 
         private static ConfigArdrum _i;
 
+        private float _fltMasterVolume = 0.75f;
         private int _intSerialBaudRate = 9600;
-
+        private string _jsnLstPad;
         private string _strSerialPortName = "com3";
 
         public new static ConfigArdrum i
@@ -31,6 +33,19 @@ namespace Ardrum
             }
         }
 
+        public float fltMasterVolume
+        {
+            get
+            {
+                return _fltMasterVolume;
+            }
+
+            set
+            {
+                _fltMasterVolume = value;
+            }
+        }
+
         public int intSerialBaudRate
         {
             get
@@ -41,6 +56,19 @@ namespace Ardrum
             set
             {
                 _intSerialBaudRate = value;
+            }
+        }
+
+        public string jsnLstPad
+        {
+            get
+            {
+                return _jsnLstPad;
+            }
+
+            set
+            {
+                _jsnLstPad = value;
             }
         }
 
@@ -68,6 +96,13 @@ namespace Ardrum
         #endregion Construtores
 
         #region Métodos
+
+        public override void salvar()
+        {
+            this.jsnLstPad = Json.i.toJson(AppArdrum.i.lstPad);
+
+            base.salvar();
+        }
 
         #endregion Métodos
 
