@@ -104,8 +104,6 @@ namespace Ardrum.Service
                 this.loop();
                 Thread.Sleep(1);
             }
-
-            this.desconectar();
         }
 
         private void conectar()
@@ -156,6 +154,11 @@ namespace Ardrum.Service
 
         private void receber()
         {
+            if (this.booParar)
+            {
+                return;
+            }
+
             if (!this.objSerial.IsOpen)
             {
                 return;

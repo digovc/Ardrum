@@ -84,6 +84,11 @@ namespace Ardrum.Service
 
                 return _objSoundOut;
             }
+
+            set
+            {
+                _objSoundOut = value;
+            }
         }
 
         private IWaveSource objWave
@@ -118,15 +123,6 @@ namespace Ardrum.Service
         #endregion Construtores
 
         #region Métodos
-
-        public override void parar()
-        {
-            base.parar();
-
-            this.objPanSource.Dispose();
-            this.objSoundOut.Dispose();
-            this.objWave.Dispose();
-        }
 
         internal void tocar(int intToqueVolume)
         {
@@ -164,9 +160,14 @@ namespace Ardrum.Service
                 return null;
             }
 
-            ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 50, Device = AppArdrum.i.objDevice };
+            if (this.objWave == null)
+            {
+                return null;
+            }
 
-            objSoundOutResultado.Initialize(this.objWave);
+            ISoundOut objSoundOutResultado = new WasapiOut() { Latency = 25, Device = AppArdrum.i.objDevice };
+
+            objSoundOutResultado.Initialize(this.objWave.ToSampleSource().ToWaveSource());
 
             objSoundOutResultado.Volume = this.pad.fltVolume;
 
@@ -180,11 +181,10 @@ namespace Ardrum.Service
                 return null;
             }
 
-            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio);
-
-            objWaveResultado.ToStereo();
-
-            objWaveResultado.AppendSource(x => new PanSource(x.ToSampleSource()) { Pan = this.pad.fltBalanco });
+            IWaveSource objWaveResultado = CodecFactory.Instance.GetCodec(this.pad.dirAudio)
+                .ToSampleSource()
+                .ToStereo()
+                .AppendSource(x => new PanSource(x) { Pan = this.pad.fltBalanco }).ToWaveSource();
 
             return objWaveResultado;
         }
@@ -196,8 +196,7 @@ namespace Ardrum.Service
 
         private void reiniciarObjWave()
         {
-            this.objWave.Dispose();
-
+            this.objSoundOut = null;
             this.objWave = null;
         }
 
@@ -220,12 +219,7 @@ namespace Ardrum.Service
                 return;
             }
 
-            if (PlaybackState.Playing.Equals(this.objSoundOut.PlaybackState))
-            {
-                this.objSoundOut.Stop();
-                this.objWave.SetPosition(TimeSpan.Zero);
-            }
-
+            this.objWave.SetPosition(TimeSpan.Zero);
             this.objSoundOut.Play();
             this.intToqueVolume = 0;
         }
